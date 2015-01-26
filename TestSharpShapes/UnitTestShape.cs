@@ -53,7 +53,7 @@ namespace TestSharpShapes
             Assert.AreEqual(Color.AliceBlue, shape.FillColor);
         }
         [TestMethod]
-        public void TestDefaultFillColor()
+        public void TestDefaultFillColors()
         {
             Shape shape = new MyShape();
             Assert.AreEqual(Color.Bisque, shape.FillColor);
