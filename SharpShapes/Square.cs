@@ -7,7 +7,9 @@ namespace SharpShapes
 {
     public class Square : Rectangle
     {
-        public Square(int width, int height) : base(width, height)
+        //here u can give whatever name you like instead of edgeLength like for eg. side, sidelength
+        //base here is usefull in getting the directives or copies(overrides) from the parent rectangle 
+        public Square(int edgeLength): base(edgeLength, edgeLength)
         {
         }
     }
