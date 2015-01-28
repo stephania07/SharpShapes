@@ -9,7 +9,7 @@ namespace TestSharpShapes
     {
         [TestMethod]
         //http://mathworld.wolfram.com/IsoscelesTrapezoid.html
-        // type 'trapezoid calc find a' in google to find either perimeter or area
+        //http://www.mathopenref.com/coordtrapareaperim.html
           public void TestTrapezoidConstructorSetsProperties()
         {
             Trapezoid trapezoid = new Trapezoid(8, 2, 4);
@@ -77,20 +77,6 @@ namespace TestSharpShapes
         {
            Trapezoid trapezoid = new Trapezoid(15, 20, 0);
         }
-
-        //[TestMethod]
-        //[ExpectedException(typeof(ArgumentException))]
-        //public void TestTrapezoidConstructorSaintyChecksBase2Negativity()
-        //{
-        //    Trapezoid trapezoid = new Trapezoid(2, -4, 5);
-        //}
-
-        //[TestMethod]
-        //[ExpectedException(typeof(ArgumentException))]
-        //public void TestTrapezoidConstructorSaintyChecksHeightNegativity()
-        //{
-        //    Trapezoid trapezoid = new Trapezoid(2, 4, -5);
-        //}
 
         [TestMethod]
         public void TestScaleTrapezoid200Percent()
