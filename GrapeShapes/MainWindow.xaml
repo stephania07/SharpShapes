@@ -8,18 +8,18 @@
             <RowDefinition Height="19*"/>
         </Grid.RowDefinitions>
         <Button Content="Submit" HorizontalAlignment="Left" Margin="351,37,0,0" VerticalAlignment="Top" Width="159" Height="40" Background="#FF1D26E0" FontWeight="Bold" FontStyle="Italic" />
-        <Canvas HorizontalAlignment="Left" Height="240" Margin="23,82,0,0" VerticalAlignment="Top" Width="487" Background="#FFB9EBF7" Grid.RowSpan="2"/>
-        <ComboBox x:Name="ShapeTypeCombobox" HorizontalAlignment="Left" Margin="23,37,0,0" VerticalAlignment="Top" Width="130" Height="40" Foreground="#FF1717CB">
+        <Canvas Name ="ShapeCanvas" HorizontalAlignment="Left" Height="240" Margin="23,102,0,0" VerticalAlignment="Top" Width="487" Grid.RowSpan="2" Background="#FFDAF0F5"/>
+        <ComboBox x:Name="ShapeTypeCombobox" HorizontalAlignment="Left" Margin="23,37,0,0" VerticalAlignment="Top" Width="100" Height="40" Foreground="#FF1717CB">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF0F0F0" Offset="0"/>
                     <GradientStop Color="#FF2626D3" Offset="1"/>
+
                 </LinearGradientBrush>
             </ComboBox.Background>
-           
+
 
         </ComboBox>
         <TextBox HorizontalAlignment="Left" Height="40" Margin="195,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Background="#FFD5D6EC" />
-
     </Grid>
 </Window>
