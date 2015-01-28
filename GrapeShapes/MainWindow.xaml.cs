@@ -34,7 +34,7 @@ namespace GrapeShapes
             var shapeType = typeof(Shape);
             foreach (Type type in Assembly.GetAssembly(shapeType).GetTypes())
             {
-                if (type.IsSubclassOf(shapeType))
+                if (type.IsSubclassOf(shapeType) && !type.IsAbstract)
                 {
                     classList.Add(type.Name);
                 }
