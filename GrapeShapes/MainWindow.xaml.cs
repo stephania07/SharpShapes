@@ -1,4 +1,4 @@
-﻿﻿using SharpShapes;
+﻿using SharpShapes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Drawing;
 
-
 namespace GrapeShapes
 {
     /// <summary>
@@ -23,19 +22,25 @@ namespace GrapeShapes
     /// </summary>
     public partial class MainWindow : Window
     {
-       
         public MainWindow()
         {
             InitializeComponent();
             PopulateClassList();
-            DrawRectangle();
-            DrawSquare(1, 50, new Square(30));
-            Square square = new Square(200);
-            square.FillColor = System.Drawing.Color.Navy;
-            square.BorderColor = System.Drawing.Color.Fuchsia;
-            DrawSquare(50, 5, square);
         }
 
+        public static int ArgumentCountFor(string className)
+        {
+            Type classType = Assembly.GetAssembly(typeof(Shape)).GetTypes().Where(shapeType => shapeType.Name == className).First();
+            ConstructorInfo classConstructor = classType.GetConstructors().First();
+            return classConstructor.GetParameters().Length;
+        }
+
+        public static Shape InstantiateWithArguments(string className, object[] args)
+        {
+            Type classType = Type.GetType(className);
+            ConstructorInfo classConstructor = classType.GetConstructors().First();
+            return (Shape)classConstructor.Invoke(args);
+        }
 
         private void PopulateClassList()
         {
@@ -48,67 +53,41 @@ namespace GrapeShapes
                     classList.Add(type.Name);
                 }
             }
-            ShapeTypeCombobox.ItemsSource = classList;
+            ShapeType.ItemsSource = classList;
         }
-        private void DrawRectangle() 
-        {
-            System.Windows.Shapes.Polygon myPolygon = new System.Windows.Shapes.Polygon();
-            myPolygon.Stroke = System.Windows.Media.Brushes.Tomato;
-            myPolygon.Fill = System.Windows.Media.Brushes.Bisque;
-            myPolygon.StrokeThickness = 2;
-            myPolygon.HorizontalAlignment = HorizontalAlignment.Left;
-            myPolygon.VerticalAlignment = VerticalAlignment.Center;
-            System.Windows.Point Point1 = new System.Windows.Point(1, 50);
-            System.Windows.Point Point2 = new System.Windows.Point(1, 80);
-            System.Windows.Point Point4 = new System.Windows.Point(50, 80);
-            System.Windows.Point Point3 = new System.Windows.Point(50, 50);
-            PointCollection myPointCollection = new PointCollection();
-            myPointCollection.Add(Point1);
-            myPointCollection.Add(Point2);
-            myPointCollection.Add(Point3);
-            myPointCollection.Add(Point4);
-            myPolygon.Points = myPointCollection;
-            ShapeCanvas.Children.Add(myPolygon);
 
-            //Cirlce myCircle = new Circle();
-            //myCircle.Stroke = System.Windows.Media.Brushes.Tomato;
-            //myCircle.Fill = System.Windows.Media.Brushes.Bisque;
-            //myCircle.StrokeThickness = 2;
-            //myCircle.HorizontalAlignment = HorizontalAlignment.Left;
-            //myCircle.VerticalAlignment = VerticalAlignment.Center;
-            //System.Windows.Point Point1 = new System.Windows.Point(1, 50);
-            //System.Windows.Point Point2 = new System.Windows.Point(1, 80);
-            //System.Windows.Point Point3 = new System.Windows.Point(50, 80);
-            //System.Windows.Point Point4 = new System.Windows.Point(50, 50);
-            //PointCollection myPointCollection = new PointCollection();
-            //myPointCollection.Add(Point1);
-            //myPointCollection.Add(Point2);
-            //myPointCollection.Add(Point3);
-            //myPointCollection.Add(Point4);
-            //myPolygon.Points = myPointCollection;
-            //ShapeCanvas.Children.Add(myCircle);
-        
-        }
-        private void DrawSquare(int x, int y, Square square)
-        { 
-            System.Windows.Shapes.Polygon myPolygon = new System.Windows.Shapes.Polygon();
-            myPolygon.Stroke = System.Windows.Media.Brushes.Green;
-            myPolygon.Fill = System.Windows.Media.Brushes.LightBlue;
-            myPolygon.StrokeThickness = 2;
-            myPolygon.HorizontalAlignment = HorizontalAlignment.Left;
-            myPolygon.VerticalAlignment = VerticalAlignment.Center;
-            System.Windows.Point Point1 = new System.Windows.Point(x, y);
-            System.Windows.Point Point2 = new System.Windows.Point(x + (double)square.Width, y);
-            System.Windows.Point Point3 = new System.Windows.Point(x+ (double)square.Width, y+ (double)square.Width);
-            System.Windows.Point Point4 = new System.Windows.Point(x, y + (double)square.Width);
-            PointCollection myPointCollection = new PointCollection();
-            myPointCollection.Add(Point1);
-            myPointCollection.Add(Point2);
-            myPointCollection.Add(Point3);
-            myPointCollection.Add(Point4);
-            myPolygon.Points = myPointCollection;
-            ShapeCanvas.Children.Add(myPolygon);
-        
+  
+
+        private void ShapeType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // TODO: Enable/Disable Inputs based on the number of required arguments.
+            string className = (String)ShapeType.SelectedValue;
+            //Solution 2
+            int argCount = ArgumentCountFor(className);
+            Argument1.IsEnabled = true;
+            Argument2.IsEnabled = (argCount > 1);
+            Argument3.IsEnabled = (argCount > 2);
+            Argument1.Clear();
+            Argument2.Clear();
+            Argument3.Clear();
+            //Solution 1
+            //int argCount = ArgumentCountFor(className);
+            //    if(argCount ==1)
+            //    {
+            //        Argument2.IsEnabled = false;
+            //        Argument3.IsEnabled = false;
+            //    }
+            //    else if (argCount == 2)
+            //    {
+            //        Argument2.IsEnabled = true;
+            //        Argument3.IsEnabled = false;
+            //    }
+            //    else
+            //    {
+            //         Argument2.IsEnabled = true;
+            //        Argument3.IsEnabled = true;
+                
+            //    }
         }
     }
 }
