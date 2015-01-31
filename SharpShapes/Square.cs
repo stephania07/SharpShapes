@@ -11,6 +11,7 @@ namespace SharpShapes
         //base here is usefull in getting the directives or copies(overrides) from the parent rectangle 
         public Square(int edgeLength): base(edgeLength, edgeLength)
         {
+           
         }
     }
 }

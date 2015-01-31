@@ -48,10 +48,8 @@ namespace SharpShapes
         /// <param name="ShapeCanvas">The Canvas on which to draw this Shape.</param>
         /// <param name="x">The x-coordinate on which to place the upper-left corner of the shape.</param>
         /// <param name="y">The y-coordinate on which to place the upper-left corner of the shape.</param>
-        //abstract public void DrawOnto(Canvas ShapeCanvas, int x, int y)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        abstract public void DrawOnto(Canvas ShapeCanvas, int x, int y);
+       
 
         /// <summary>
         /// Calculates the perimeter of he shape

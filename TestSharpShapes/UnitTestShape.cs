@@ -2,6 +2,13 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SharpShapes;
 using System.Drawing;
+using System.Windows.Controls;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
 
 namespace TestSharpShapes
 {
@@ -17,6 +24,12 @@ namespace TestSharpShapes
                 { 
                     throw new NotImplementedException(); 
                 }
+            }
+            [TestMethod]
+            public override void DrawOnto(Canvas ShapeCanvas, int x, int y)
+            {
+                throw new NotImplementedException();
+
             }
             public override void Scale(int percent)
             {
@@ -58,5 +71,6 @@ namespace TestSharpShapes
             Shape shape = new MyShape();
             Assert.AreEqual(Color.Bisque, shape.FillColor);
         }
+       
     }
 }
