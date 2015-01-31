@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.Windows.Controls;
+﻿﻿using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace SharpShapes
 {
@@ -32,8 +28,8 @@ namespace SharpShapes
 
         public Shape()
         {
-            BorderColor = Color.Tomato;
-            FillColor = Color.Bisque;
+            BorderColor = Colors.Tomato;
+            FillColor = Colors.Bisque;
         }
 
          /// <summary>
@@ -52,7 +48,7 @@ namespace SharpShapes
        
 
         /// <summary>
-        /// Calculates the perimeter of he shape
+        /// Calculates the perimeter of the shape
         /// </summary>
         /// <returns>the perimeter of the shape</returns>
         abstract public decimal Perimeter();

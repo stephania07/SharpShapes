@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SharpShapes;
+using System.Windows.Media;
 
 namespace TestSharpShapes
 {
@@ -72,16 +73,6 @@ namespace TestSharpShapes
             Assert.AreEqual((decimal)5.55, square.Height);           
         }
 
-        //[TestMethod]
-        //public void TestScaleRectangleUpAndDown()
-        //{
-        //    Square square = new Square(10);
-        //    square.Scale(50);
-        //    square.Scale(200);
-        //    Assert.AreEqual(10, square.Width);
-        //    Assert.AreEqual(15, square.Height);       
-        //}
-
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestScaleRectangleTo0Percent()
@@ -130,8 +121,8 @@ namespace TestSharpShapes
         public void TestDefaultColors()
         {
             Square shape = new Square(10);
-            Assert.AreEqual(System.Drawing.Color.Bisque, shape.FillColor);
-            Assert.AreEqual(System.Drawing.Color.Tomato, shape.BorderColor);
+            Assert.AreEqual(Colors.Bisque, shape.FillColor);
+            Assert.AreEqual(Colors.Tomato, shape.BorderColor);
         }
 
        
